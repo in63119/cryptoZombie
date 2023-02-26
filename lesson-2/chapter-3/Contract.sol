@@ -19,7 +19,12 @@ contract ZombieFactory {
 
     function _createZombie(string _name, uint _dna) private {
         uint id = zombies.push(Zombie(_name, _dna)) - 1;
+
+        // mapping을 쓰는 법에 대해 배움
+        // zombieToOwner의 id당 msg.sender를 할당
         zombieToOwner[id] = msg.sender;
+
+        // ownerZombieCount의 msg.sender당 하나씩 카운팅
         ownerZombieCount[msg.sender]++;
         emit NewZombie(id, _name, _dna);
     }
