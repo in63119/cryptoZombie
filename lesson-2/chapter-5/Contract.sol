@@ -36,5 +36,7 @@ contract ZombieFactory {
     }
 
 }
+
+// 컨트랙트를 상속받는 방법
 contract ZombieFeeding is ZombieFactory {
 }
