@@ -29,6 +29,7 @@ contract ZombieFeeding is ZombieFactory {
 
   function feedOnKitty(uint _zombieId, uint _kittyId) public {
     uint kittyDna;
+    // kittyContract의 getKitty함수에 _kittyId를 인자로 넣고, 10번째 리턴값만 가져가고 싶을 때
     (,,,,,,,,,kittyDna) = kittyContract.getKitty(_kittyId);
     feedAndMultiply(_zombieId, kittyDna);
   }
