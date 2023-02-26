@@ -16,8 +16,10 @@ contract KittyInterface {
 }
 contract ZombieFeeding is ZombieFactory {
 
+  // 외부 의존성에 대한 공부
   KittyInterface kittyContract;
 
+  // 키티 컨트랙트를 인터페이스에 _address에 따라 변경되도록 만듦
   function setKittyContractAddress(address _address) external {
     kittyContract = KittyInterface(_address);
   }
