@@ -18,6 +18,7 @@ contract ZombieFeeding is ZombieFactory {
 
   KittyInterface kittyContract;
 
+  // onlyOwner 제어자를 넣어서 오너만 이 함수를 호출할 수 있도록 만든다.
   function setKittyContractAddress(address _address) external onlyOwner {
     kittyContract = KittyInterface(_address);
   }
