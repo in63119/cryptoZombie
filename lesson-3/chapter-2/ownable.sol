@@ -4,6 +4,11 @@ pragma solidity ^0.4.25;
 * @title Ownable
 * @dev The Ownable contract has an owner address, and provides basic authorization control
 * functions, this simplifies the implementation of "user permissions".
+*
+* Ownable 컨트랙트는 다음과 같은 역할을 한다.
+* 1. 컨트랙트가 생성되면 컨트랙트의 생성자가 전역 변수 Owner에 msg.sender(컨트랙트를 배포한 사람)를 대입한다.
+* 2. 특정한 함수들에 대해서 오직 소유자(Owner)만 접근할 수 있도록 제한 가능한 onlyOwner 제어자를 추가한다.
+* 3. 새로운 소유자(New Owner)에게 해당 컨트랙트의 소유권을 옮길 수 있도록 한다.
 */
 contract Ownable {
   address private _owner;
