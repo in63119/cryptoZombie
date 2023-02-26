@@ -14,6 +14,8 @@ contract ZombieFactory {
 
     Zombie[] public zombies;
 
+    // mapping에 대해 배웠음.
+    // mapping은 (키 => 값) 형식으로 되어있다.
     mapping (uint => address) public zombieToOwner;
     mapping (address => uint) ownerZombieCount;
 
