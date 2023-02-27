@@ -10,6 +10,9 @@ contract ZombieFactory is Ownable {
     struct Zombie {
         string name;
         uint dna;
+        // uint의 여러가지 타입(ex. uint32, uint8, uint16)은 그냥 쓴다고 해서 가스비가 줄어들지 않는다.
+        // 구조체(struct)안에 써야 가스비야 아껴진다.abi
+        // 또는 같은 타입(ex. uint32 - uint32, uint8 - uint8..)을 나란히 써야 가스를 덜 소모한다.
         uint32 level;
         uint32 readyTime;
     }
