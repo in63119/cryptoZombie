@@ -6,6 +6,7 @@ contract ZombieFactory is Ownable {
 
     uint dnaDigits = 16;
     uint dnaModulus = 10 ** dnaDigits;
+    // 1 days는 86400(24시간 * 60분 * 60초)
     uint cooldownTime = 1 days;
 
     struct Zombie {
@@ -21,6 +22,8 @@ contract ZombieFactory is Ownable {
     mapping (address => uint) ownerZombieCount;
 
     function _createZombie(string _name, uint _dna) internal {
+        // Zombie 구조체가 변경되었으니 이에 따른 인풋값을 변경
+        // 1 level, 현재 타임값에 하루(1 days)를 더한값.
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime))) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
