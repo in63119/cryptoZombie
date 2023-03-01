@@ -14,6 +14,7 @@ contract KittyInterface {
     uint256 genes
   );
 }
+
 contract ZombieFeeding is ZombieFactory {
 
   KittyInterface kittyContract;
@@ -22,11 +23,14 @@ contract ZombieFeeding is ZombieFactory {
     kittyContract = KittyInterface(_address);
   }
 
+  // 구조체를 인수로 전달하기
+  // 함수의 인자로 구조체를 넣어서 함수들 간에 구조체를 공유할 수 있음
   function _triggerCooldown(Zombie storage _zombie) internal {
     _zombie.readyTime = uint32(now + cooldownTime);
   }
 
   function _isReady(Zombie storage _zombie) internal view returns (bool) {
+      // 이렇게 하면 true or false로 리턴이 된다.
       return (_zombie.readyTime <= now);
   }
 
