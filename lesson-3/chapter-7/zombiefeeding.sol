@@ -30,9 +30,13 @@ contract ZombieFeeding is ZombieFactory {
       return (_zombie.readyTime <= now);
   }
 
+  // 컨트랙트의 보안을 따져볼 때 : 함수 중 public, external에 대하여 사용자들이 남용할 수 있는 방법에 대해 생각하면 된다.
+  // 그래서 'onlyOwner'와 같은 제어자를 사용해야 함.
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal {
     require(msg.sender == zombieToOwner[_zombieId]);
     Zombie storage myZombie = zombies[_zombieId];
+
+    // _isReady가 true or false에 따라 다음을 진행할지 확인
     require(_isReady(myZombie));
     _targetDna = _targetDna % dnaModulus;
     uint newDna = (myZombie.dna + _targetDna) / 2;
@@ -40,6 +44,8 @@ contract ZombieFeeding is ZombieFactory {
       newDna = newDna - newDna % 100 + 99;
     }
     _createZombie("NoName", newDna);
+
+    // 먹이를 먹으면 재사용시간이 생기도록
     _triggerCooldown(myZombie);
   }
 
