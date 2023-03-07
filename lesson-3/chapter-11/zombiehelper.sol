@@ -17,6 +17,9 @@ contract ZombieHelper is ZombieFeeding {
     zombies[_zombieId].dna = _newDna;
   }
 
+  // storage에 데이터를 쓰면 비싸기 때문에
+  // 만약, 배열을 사용한다면 함수 안에서 배열을 memory에 쓰는 방법을 쓴다.
+  // external view함수를 쓰면 사용자들이 가스를 쓰지않고, 데이터를 받아볼 수 있다.
   function getZombiesByOwner(address _owner) external view returns(uint[]) {
     uint[] memory result = new uint[](ownerZombieCount[_owner]);
 
