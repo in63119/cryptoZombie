@@ -9,6 +9,7 @@ contract ZombieHelper is ZombieFeeding {
     _;
   }
 
+  // payable 제어자가 있어야 이더를 보내고 받을 수 있다.
   function levelUp(uint _zombieId) external payable {
     require(msg.value == levelUpFee);
     zombies[_zombieId].level++;
