@@ -9,12 +9,15 @@ contract ZombieHelper is ZombieFeeding {
     _;
   }
 
+  // 이 컨트랙트에 이더를 받으면 그 이더를 컨트랙트 오너에게 전달
+  // 수입을 정산받는 함수이다.
   function withdraw() external onlyOwner {
     address _owner = owner();
     _owner.transfer(address(this).balance);
 
   }
 
+  // 이더의 가격 변동에 따라 levelUpFee를 교체할 수 있는 함수이다.
   function setLevelUpFee(uint _fee) external onlyOwner {
     levelUpFee = _fee;
   }
