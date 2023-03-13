@@ -9,6 +9,7 @@ contract ZombieAttack is ZombieHelper {
     return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
   }
 
+  // 좀이 어택에 관한 함수를 만들다.
   function attack(uint _zombieId, uint _targetId) external {
   }
 }
