@@ -18,6 +18,7 @@ contract ZombieFeeding is ZombieFactory {
 
   KittyInterface kittyContract;
 
+  // msg.sender가 좀비의 Owner인지 확인하는 제어자
   modifier ownerOf(uint _zombieId) {
     require(msg.sender == zombieToOwner[_zombieId]);
     _;
@@ -35,6 +36,7 @@ contract ZombieFeeding is ZombieFactory {
       return (_zombie.readyTime <= now);
   }
 
+  // 여기서 제어자 사용
   function feedAndMultiply(uint _zombieId, uint _targetDna, string _species) internal ownerOf(_zombieId) {
     Zombie storage myZombie = zombies[_zombieId];
     require(_isReady(myZombie));
