@@ -23,10 +23,12 @@ contract ZombieHelper is ZombieFeeding {
     zombies[_zombieId].level++;
   }
 
+  // ZombieFeeding에서 가져온 ownerOf 제어자를 상속
   function changeName(uint _zombieId, string _newName) external aboveLevel(2, _zombieId) ownerOf(_zombieId) {
     zombies[_zombieId].name = _newName;
   }
 
+  // ZombieFeeding에서 가져온 ownerOf 제어자를 상속
   function changeDna(uint _zombieId, uint _newDna) external aboveLevel(20, _zombieId) ownerOf(_zombieId) {
     zombies[_zombieId].dna = _newDna;
   }
