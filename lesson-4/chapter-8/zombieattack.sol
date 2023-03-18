@@ -9,6 +9,8 @@ contract ZombieAttack is ZombieHelper {
     return uint(keccak256(abi.encodePacked(now, msg.sender, randNonce))) % _modulus;
   }
 
+  // 여기 ownerOf 적용
+  // 상대방 좀비를 공격하는 함수
   function attack(uint _zombieId, uint _targetId) external ownerOf(_zombieId) {
     Zombie storage myZombie = zombies[_zombieId];
     Zombie storage enemyZombie = zombies[_targetId];
