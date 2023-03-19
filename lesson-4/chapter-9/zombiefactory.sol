@@ -13,6 +13,7 @@ contract ZombieFactory is Ownable {
       uint dna;
       uint32 level;
       uint32 readyTime;
+      // Zombie 구조체에 새로운 카운트 추가
       uint16 winCount;
       uint16 lossCount;
     }
@@ -23,6 +24,7 @@ contract ZombieFactory is Ownable {
     mapping (address => uint) ownerZombieCount;
 
     function _createZombie(string _name, uint _dna) internal {
+        // 처음 생긴 승, 패 카운트는 0,0
         uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
         zombieToOwner[id] = msg.sender;
         ownerZombieCount[msg.sender]++;
