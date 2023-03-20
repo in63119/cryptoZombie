@@ -13,6 +13,8 @@ contract ZombieAttack is ZombieHelper {
     Zombie storage myZombie = zombies[_zombieId];
     Zombie storage enemyZombie = zombies[_targetId];
     uint rand = randMod(100);
+
+    // 랜덤으로 승리 확률이 70이 넘어가면 상대 좀비를 먹는다.
     if (rand <= attackVictoryProbability) {
       myZombie.winCount++;
       myZombie.level++;
