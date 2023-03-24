@@ -3,8 +3,8 @@ pragma solidity ^0.4.25;
 import "./zombieattack.sol";
 import "./erc721.sol";
 
+// zombiefactory.sol 에 있는 맵핑을 사용해서 리턴
 contract ZombieOwnership is ZombieAttack, ERC721 {
-
   function balanceOf(address _owner) external view returns (uint256) {
     return ownerZombieCount[_owner];
   }
