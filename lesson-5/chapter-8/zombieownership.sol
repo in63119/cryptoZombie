@@ -22,6 +22,8 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
     emit Transfer(_from, _to, _tokenId);
   }
 
+  // transferFrom 함수. 미리 approve 받았는지 확인하고,
+  // transfer 해주는 함수.
   function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
     require (zombieToOwner[_tokenId] == msg.sender || zombieApprovals[_tokenId] == msg.sender);
     _transfer(_from, _to, _tokenId);
