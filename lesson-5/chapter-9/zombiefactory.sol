@@ -1,6 +1,9 @@
 pragma solidity ^0.4.25;
 
 import "./ownable.sol";
+// solidity int 자료형에 대한 오버플로우를 막기 위한 safemath 라이브러리
+// 오버플로우 : uint8 인 변수 255에 + 1하면 0으로 돌아감.
+// 이진수 11111111에 1을 더하면 00000000으로 돌아가는 것.
 import "./safemath.sol";
 
 contract ZombieFactory is Ownable {
