@@ -6,6 +6,7 @@ import "./safemath.sol";
 contract ZombieFactory is Ownable {
 
   using SafeMath for uint256;
+  // uint32, 16을 위한 라이브러리
   using SafeMath32 for uint32;
   using SafeMath16 for uint16;
 
@@ -32,6 +33,7 @@ contract ZombieFactory is Ownable {
   function _createZombie(string _name, uint _dna) internal {
     uint id = zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime), 0, 0)) - 1;
     zombieToOwner[id] = msg.sender;
+    // 여기서 카운트가 uint32
     ownerZombieCount[msg.sender] = ownerZombieCount[msg.sender].add(1);
     emit NewZombie(id, _name, _dna);
   }

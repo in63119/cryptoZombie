@@ -49,6 +49,8 @@ library SafeMath {
 /**
  * @title SafeMath32
  * @dev SafeMath library implemented for uint32
+ * 
+ * uint32형을 위한 라이브러리
  */
 library SafeMath32 {
 
@@ -83,6 +85,8 @@ library SafeMath32 {
 /**
  * @title SafeMath16
  * @dev SafeMath library implemented for uint16
+ * 
+ * uint16형을 위한 라이브러리
  */
 library SafeMath16 {
 
