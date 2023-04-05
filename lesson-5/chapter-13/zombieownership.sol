@@ -4,6 +4,11 @@ import "./zombieattack.sol";
 import "./erc721.sol";
 import "./safemath.sol";
 
+/// @title A title that should describe the contract/interface
+/// @author The name of the author
+/// @notice Explain to an end user what this does
+/// @dev Explain to a developer any extra details
+// 주석을 할 때 ///을 하면 natspec에 따른 주석을 할 수 있다.
 contract ZombieOwnership is ZombieAttack, ERC721 {
 
   using SafeMath for uint256;
