@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>CryptoZombies front-end</title>
-    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="web3.min.js"></script>
-    <script language="javascript" type="text/javascript" src="cryptozombies_abi.js"></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="web3.min.js"
+    ></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="cryptozombies_abi.js"
+    ></script>
   </head>
   <body>
-
     <script>
       var cryptoZombies;
 
       function startApp() {
         var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
-        cryptoZombies = new web3js.eth.Contract(cryptoZombiesABI, cryptoZombiesAddress);
+        cryptoZombies = new web3js.eth.Contract(
+          cryptoZombiesABI,
+          cryptoZombiesAddress
+        );
       }
 
       function getZombieDetails(id) {
-        return cryptoZombies.methods.zombies(id).call()
+        return cryptoZombies.methods.zombies(id).call();
       }
 
+      // contract method call 하는 것
+      // public으로 변수를 선언하면 저절로 해당 이름을 불러올 수 있는 함수가 생긴다.
       function zombieToOwner(id) {
-        return cryptoZombies.methods.zombieToOwner(id).call()
+        return cryptoZombies.methods.zombieToOwner(id).call();
       }
 
       function getZombiesByOwner(owner) {
-        return cryptoZombies.methods.getZombiesByOwner(owner).call()
+        return cryptoZombies.methods.getZombiesByOwner(owner).call();
       }
 
-      window.addEventListener('load', function() {
-
-       
-        if (typeof web3 !== 'undefined') {
-         
+      window.addEventListener("load", function () {
+        if (typeof web3 !== "undefined") {
           web3js = new Web3(web3.currentProvider);
         } else {
-         
-         
         }
 
-       
-        startApp()
-
-      })
+        startApp();
+      });
     </script>
   </body>
 </html>
