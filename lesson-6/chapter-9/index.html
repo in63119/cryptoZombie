@@ -43,6 +43,8 @@
           }
         }, 100);
 
+        // Event 수신.
+        // 새로운 좀비가 생기면 getZombiesByOwner 함수 실행
         cryptoZombies.events
           .Transfer({ filter: { _to: userAccount } })
           .on("data", function (event) {
